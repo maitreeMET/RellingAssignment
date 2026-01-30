@@ -56,3 +56,16 @@ These are meant to make the app easier to inspect and troubleshoot during review
 ```bash
 npm install
 npm run dev
+```
+
+## AI LOG
+
+I structured the overall system and workflow myself and like deciding how state moves from upload, QA, approval, clip generation, how data is laid out on disk, and how persistence works across restarts. 
+
+In several places, AI-generated suggestions weren’t directly usable, especially around Electron media playback, IPC boundaries, and idempotent clip generation. Those parts required manual debugging, iteration, and testing against real videos.
+
+I also had to override or refine AI output when it suggested approaches that were either insecure (for example, disabling web security for playback) or too generic. In those cases, I opted for cleaner solutions, like using a custom media protocol and explicit filesystem guards.
+
+Overall, AI helped speed up iteration and reduce boilerplate, but the final architecture, UX decisions, and edge-case handling were implemented and validated manually.
+
+I used claude code by the way.
